@@ -1,0 +1,58 @@
+experiment:
+  name: nisc
+  output_root: outputs
+  seed: 42
+  device: auto
+
+data:
+  train_path: data/processed/cold/train.jsonl
+  dev_path: data/processed/cold/dev.jsonl
+  test_path: data/processed/cold/test.jsonl
+  text_column: text
+  label_column: label
+  id_column: id
+  max_length: 128
+  num_workers: 0
+
+model:
+  backbone_name: bert-base-chinese
+  num_labels: 2
+
+training:
+  epochs: 5
+  per_device_batch_size: 8
+  gradient_accumulation_steps: 4
+  learning_rate: 2.0e-5
+  weight_decay: 0.01
+  warmup_ratio: 0.1
+  max_grad_norm: 1.0
+  fp16: true
+  early_stopping_patience: 2
+  decision_threshold: 0.5
+
+bias:
+  tau_conf: 0.4
+  fmin: 5
+  eps: 1.0e-6
+  top_k: 50
+  tau_mask: 0.1
+  tau_flip: 0.5
+  stopwords_path: resources/stopwords_zh.txt
+
+pruning:
+  step_size: 5
+  max_rounds: 20
+  alpha: 0.5
+
+compensation:
+  provider: openai
+  model_name: gpt-3.5-turbo-0613
+  samples_per_source: 20
+  scenario_count: 5
+  sample_length_min: 20
+  sample_length_max: 60
+  mix_ratio: 1.0
+  epochs: 2
+  learning_rate: 5.0e-5
+  early_stopping_patience: 2
+  toxic_blacklist_path: resources/toxic_blacklist.txt

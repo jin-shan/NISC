@@ -1,0 +1,12 @@
+base_config: configs/base.yaml
+
+experiment:
+  name: bert_swsr
+
+data:
+  train_path: data/processed/swsr/train.jsonl
+  dev_path: data/processed/swsr/dev.jsonl
+  test_path: data/processed/swsr/test.jsonl
+
+model:
+  backbone_name: bert-base-chinese

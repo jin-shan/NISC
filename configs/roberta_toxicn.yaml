@@ -1,0 +1,12 @@
+base_config: configs/base.yaml
+
+experiment:
+  name: roberta_toxicn
+
+data:
+  train_path: data/processed/toxicn/train.jsonl
+  dev_path: data/processed/toxicn/dev.jsonl
+  test_path: data/processed/toxicn/test.jsonl
+
+model:
+  backbone_name: hfl/chinese-roberta-wwm-ext

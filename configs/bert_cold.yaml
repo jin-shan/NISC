@@ -1,0 +1,12 @@
+base_config: configs/base.yaml
+
+experiment:
+  name: bert_cold
+
+data:
+  train_path: data/processed/cold/train.jsonl
+  dev_path: data/processed/cold/dev.jsonl
+  test_path: data/processed/cold/test.jsonl
+
+model:
+  backbone_name: bert-base-chinese
